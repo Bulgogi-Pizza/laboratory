@@ -1,3 +1,8 @@
 /Spring/.gradle
 /Spring/.idea
 /Django/.venv
+/Express/node_modules
+.idea
+/FastAPI/.idea
+/Spring/build
+/Spring/gradle

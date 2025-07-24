@@ -1,0 +1,996 @@
+
+<html>
+<head>
+    <title>성능 테스트 상세 분석 보고서</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin: 2em; background-color: #f8f9fa; color: #212529; }}
+        .container {{ max-width: 1200px; margin: auto; }}
+        h1, h2, h3 {{ color: #000; border-bottom: 2px solid #dee2e6; padding-bottom: 0.5em; }}
+        .scenario-section {{ background-color: #fff; border: 1px solid #dee2e6; border-radius: 8px; padding: 2em; margin-bottom: 2em; }}
+        table {{ border-collapse: collapse; width: 100%; margin: 2em 0; font-size: 0.9em; }}
+        th, td {{ border: 1px solid #ccc; padding: 10px; text-align: left; }}
+        th {{ background-color: #f2f2f2; }}
+        tr:nth-child(even) {{ background-color: #f9f9f9; }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 성능 테스트 상세 분석 보고서</h1>
+        <p>각 시나리오별 5회 실행에 대한 개별 결과 및 통계 요약입니다.</p>
+        <div class='scenario-section'><h2>NORMAL 시나리오</h2><h3>🚀 TPS (초당 요청 수)</h3><canvas id="chart_normal_TPS"></canvas>
+        <script>
+            new Chart(document.getElementById('chart_normal_TPS'), {
+                type: 'bar',
+                data: {
+                    labels: ["Django - Fibonacci(25)", "Django - HelloWorld", "Express - Fibonacci(25)", "Express - HelloWorld", "FastAPI - Fibonacci(25)", "FastAPI - HelloWorld", "Spring - Fibonacci(25)", "Spring - HelloWorld"],
+                    datasets: [{"label": "Run 1", "data": [88.15, 3537.49, 1806.93, 17856.18, 71.48, 7049.94, 33695.49, 115650.6]}, {"label": "Run 2", "data": [8.82, 3499.07, 1792.36, 17850.9, 70.18, 6973.05, 33969.4, 115289.18]}, {"label": "Run 3", "data": [84.82, 3400.46, 1798.19, 17992.43, 71.37, 7092.83, 34384.58, 115883.67]}, {"label": "Run 4", "data": [38.37, 3597.4, 1804.26, 18122.06, 71.62, 6991.19, 33581.76, 116109.49]}, {"label": "Run 5", "data": [122.78, 3528.18, 1802.5, 18007.79, 69.67, 7005.17, 33839.09, 115053.03]}]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true } },
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } }
+                }
+            });
+        </script>
+        <table border="1" class="dataframe summary-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>test_case</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Django - Fibonacci(25)</th>
+      <td>8.82</td>
+      <td>122.78</td>
+      <td>68.59</td>
+    </tr>
+    <tr>
+      <th>Django - HelloWorld</th>
+      <td>3400.46</td>
+      <td>3597.40</td>
+      <td>3512.52</td>
+    </tr>
+    <tr>
+      <th>Express - Fibonacci(25)</th>
+      <td>1792.36</td>
+      <td>1806.93</td>
+      <td>1800.85</td>
+    </tr>
+    <tr>
+      <th>Express - HelloWorld</th>
+      <td>17850.90</td>
+      <td>18122.06</td>
+      <td>17965.87</td>
+    </tr>
+    <tr>
+      <th>FastAPI - Fibonacci(25)</th>
+      <td>69.67</td>
+      <td>71.62</td>
+      <td>70.86</td>
+    </tr>
+    <tr>
+      <th>FastAPI - HelloWorld</th>
+      <td>6973.05</td>
+      <td>7092.83</td>
+      <td>7022.44</td>
+    </tr>
+    <tr>
+      <th>Spring - Fibonacci(25)</th>
+      <td>33581.76</td>
+      <td>34384.58</td>
+      <td>33894.06</td>
+    </tr>
+    <tr>
+      <th>Spring - HelloWorld</th>
+      <td>115053.03</td>
+      <td>116109.49</td>
+      <td>115597.19</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>⏱️ 평균 Latency (ms)</h3><canvas id="chart_normal_Latencyms"></canvas>
+        <script>
+            new Chart(document.getElementById('chart_normal_Latencyms'), {
+                type: 'bar',
+                data: {
+                    labels: ["Django - Fibonacci(25)", "Django - HelloWorld", "Express - Fibonacci(25)", "Express - HelloWorld", "FastAPI - Fibonacci(25)", "FastAPI - HelloWorld", "Spring - Fibonacci(25)", "Spring - HelloWorld"],
+                    datasets: [{"label": "Run 1", "data": [14.92, 27.7, 11.14, 6.75, 276.07, 14.72, 618.75, 779.82]}, {"label": "Run 2", "data": [14.96, 28.2, 11.24, 6.5, 281.61, 15.58, 591.9, 805.88]}, {"label": "Run 3", "data": [14.5, 28.99, 11.19, 6.33, 276.75, 14.45, 614.76, 793.1]}, {"label": "Run 4", "data": [17.08, 27.1, 11.17, 6.35, 276.07, 14.75, 615.91, 797.13]}, {"label": "Run 5", "data": [17.24, 27.54, 11.2, 6.45, 280.56, 14.76, 622.65, 795.97]}]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true } },
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } }
+                }
+            });
+        </script>
+        <table border="1" class="dataframe summary-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>test_case</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Django - Fibonacci(25)</th>
+      <td>14.50</td>
+      <td>17.24</td>
+      <td>15.74</td>
+    </tr>
+    <tr>
+      <th>Django - HelloWorld</th>
+      <td>27.10</td>
+      <td>28.99</td>
+      <td>27.91</td>
+    </tr>
+    <tr>
+      <th>Express - Fibonacci(25)</th>
+      <td>11.14</td>
+      <td>11.24</td>
+      <td>11.19</td>
+    </tr>
+    <tr>
+      <th>Express - HelloWorld</th>
+      <td>6.33</td>
+      <td>6.75</td>
+      <td>6.48</td>
+    </tr>
+    <tr>
+      <th>FastAPI - Fibonacci(25)</th>
+      <td>276.07</td>
+      <td>281.61</td>
+      <td>278.21</td>
+    </tr>
+    <tr>
+      <th>FastAPI - HelloWorld</th>
+      <td>14.45</td>
+      <td>15.58</td>
+      <td>14.85</td>
+    </tr>
+    <tr>
+      <th>Spring - Fibonacci(25)</th>
+      <td>591.90</td>
+      <td>622.65</td>
+      <td>612.79</td>
+    </tr>
+    <tr>
+      <th>Spring - HelloWorld</th>
+      <td>779.82</td>
+      <td>805.88</td>
+      <td>794.38</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>⚙️ 총 CPU 사용량 (%)</h3><canvas id="chart_normal_CPU"></canvas>
+        <script>
+            new Chart(document.getElementById('chart_normal_CPU'), {
+                type: 'bar',
+                data: {
+                    labels: ["Django - Fibonacci(25)", "Django - HelloWorld", "Express - Fibonacci(25)", "Express - HelloWorld", "FastAPI - Fibonacci(25)", "FastAPI - HelloWorld", "Spring - Fibonacci(25)", "Spring - HelloWorld"],
+                    datasets: [{"label": "Run 1", "data": [1.81, 93.81, 101.62, 99.22, 100.03, 87.63, 960.57, 729.4]}, {"label": "Run 2", "data": [0.64, 96.52, 101.44, 99.28, 98.79, 86.95, 973.5, 742.44]}, {"label": "Run 3", "data": [0.69, 97.37, 101.5, 98.25, 100.28, 88.07, 992.59, 735.94]}, {"label": "Run 4", "data": [0.55, 94.81, 101.71, 98.98, 98.02, 88.08, 964.01, 751.75]}, {"label": "Run 5", "data": [1.99, 94.96, 101.38, 99.15, 100.41, 86.29, 959.73, 730.15]}]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true } },
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } }
+                }
+            });
+        </script>
+        <table border="1" class="dataframe summary-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>test_case</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Django - Fibonacci(25)</th>
+      <td>0.55</td>
+      <td>1.99</td>
+      <td>1.14</td>
+    </tr>
+    <tr>
+      <th>Django - HelloWorld</th>
+      <td>93.81</td>
+      <td>97.37</td>
+      <td>95.49</td>
+    </tr>
+    <tr>
+      <th>Express - Fibonacci(25)</th>
+      <td>101.38</td>
+      <td>101.71</td>
+      <td>101.53</td>
+    </tr>
+    <tr>
+      <th>Express - HelloWorld</th>
+      <td>98.25</td>
+      <td>99.28</td>
+      <td>98.98</td>
+    </tr>
+    <tr>
+      <th>FastAPI - Fibonacci(25)</th>
+      <td>98.02</td>
+      <td>100.41</td>
+      <td>99.51</td>
+    </tr>
+    <tr>
+      <th>FastAPI - HelloWorld</th>
+      <td>86.29</td>
+      <td>88.08</td>
+      <td>87.40</td>
+    </tr>
+    <tr>
+      <th>Spring - Fibonacci(25)</th>
+      <td>959.73</td>
+      <td>992.59</td>
+      <td>970.08</td>
+    </tr>
+    <tr>
+      <th>Spring - HelloWorld</th>
+      <td>729.40</td>
+      <td>751.75</td>
+      <td>737.94</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>🧠 총 메모리 사용량 (KB)</h3><canvas id="chart_normal_MemoryKB"></canvas>
+        <script>
+            new Chart(document.getElementById('chart_normal_MemoryKB'), {
+                type: 'bar',
+                data: {
+                    labels: ["Django - Fibonacci(25)", "Django - HelloWorld", "Express - Fibonacci(25)", "Express - HelloWorld", "FastAPI - Fibonacci(25)", "FastAPI - HelloWorld", "Spring - Fibonacci(25)", "Spring - HelloWorld"],
+                    datasets: [{"label": "Run 1", "data": [50963.0, 50816.0, 106128.0, 96381.0, 41281.0, 37723.0, 202701.0, 178990.0]}, {"label": "Run 2", "data": [51242.0, 51064.0, 106891.0, 97239.0, 30503.0, 37717.0, 201952.0, 184876.0]}, {"label": "Run 3", "data": [51286.0, 50469.0, 107338.0, 97570.0, 42348.0, 37862.0, 197569.0, 178210.0]}, {"label": "Run 4", "data": [51662.0, 51062.0, 106114.0, 97777.0, 41895.0, 37723.0, 189472.0, 171044.0]}, {"label": "Run 5", "data": [51350.0, 50458.0, 106646.0, 97805.0, 41702.0, 38237.0, 189673.0, 170810.0]}]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true } },
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } }
+                }
+            });
+        </script>
+        <table border="1" class="dataframe summary-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>test_case</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Django - Fibonacci(25)</th>
+      <td>50963</td>
+      <td>51662</td>
+      <td>51300.6</td>
+    </tr>
+    <tr>
+      <th>Django - HelloWorld</th>
+      <td>50458</td>
+      <td>51064</td>
+      <td>50773.8</td>
+    </tr>
+    <tr>
+      <th>Express - Fibonacci(25)</th>
+      <td>106114</td>
+      <td>107338</td>
+      <td>106623.4</td>
+    </tr>
+    <tr>
+      <th>Express - HelloWorld</th>
+      <td>96381</td>
+      <td>97805</td>
+      <td>97354.4</td>
+    </tr>
+    <tr>
+      <th>FastAPI - Fibonacci(25)</th>
+      <td>30503</td>
+      <td>42348</td>
+      <td>39545.8</td>
+    </tr>
+    <tr>
+      <th>FastAPI - HelloWorld</th>
+      <td>37717</td>
+      <td>38237</td>
+      <td>37852.4</td>
+    </tr>
+    <tr>
+      <th>Spring - Fibonacci(25)</th>
+      <td>189472</td>
+      <td>202701</td>
+      <td>196273.4</td>
+    </tr>
+    <tr>
+      <th>Spring - HelloWorld</th>
+      <td>170810</td>
+      <td>184876</td>
+      <td>176786.0</td>
+    </tr>
+  </tbody>
+</table>
+        </div><div class='scenario-section'><h2>SINGLE 시나리오</h2><h3>🚀 TPS (초당 요청 수)</h3><canvas id="chart_single_TPS"></canvas>
+        <script>
+            new Chart(document.getElementById('chart_single_TPS'), {
+                type: 'bar',
+                data: {
+                    labels: ["Django - Fibonacci(25)", "Django - HelloWorld", "Express - Fibonacci(25)", "Express - HelloWorld", "FastAPI - Fibonacci(25)", "FastAPI - HelloWorld", "Spring - Fibonacci(25)", "Spring - HelloWorld"],
+                    datasets: [{"label": "Run 1", "data": [157.83, 3590.8, 1802.97, 18060.99, 71.27, 6997.49, 4371.4, 21005.18]}, {"label": "Run 2", "data": [64.82, 3573.32, 1799.91, 17987.08, 71.45, 7040.18, 4534.1, 21837.85]}, {"label": "Run 3", "data": [115.58, 3581.17, 1803.85, 17947.7, 71.53, 7073.17, 4506.14, 21335.64]}, {"label": "Run 4", "data": [73.85, 3583.83, 1803.92, 18030.19, 69.96, 6957.33, 4454.05, 21480.05]}, {"label": "Run 5", "data": [216.8, 3611.18, 1809.91, 18077.33, 70.01, 7044.27, 4457.45, 21650.66]}]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true } },
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } }
+                }
+            });
+        </script>
+        <table border="1" class="dataframe summary-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>test_case</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Django - Fibonacci(25)</th>
+      <td>64.82</td>
+      <td>216.80</td>
+      <td>125.78</td>
+    </tr>
+    <tr>
+      <th>Django - HelloWorld</th>
+      <td>3573.32</td>
+      <td>3611.18</td>
+      <td>3588.06</td>
+    </tr>
+    <tr>
+      <th>Express - Fibonacci(25)</th>
+      <td>1799.91</td>
+      <td>1809.91</td>
+      <td>1804.11</td>
+    </tr>
+    <tr>
+      <th>Express - HelloWorld</th>
+      <td>17947.70</td>
+      <td>18077.33</td>
+      <td>18020.66</td>
+    </tr>
+    <tr>
+      <th>FastAPI - Fibonacci(25)</th>
+      <td>69.96</td>
+      <td>71.53</td>
+      <td>70.84</td>
+    </tr>
+    <tr>
+      <th>FastAPI - HelloWorld</th>
+      <td>6957.33</td>
+      <td>7073.17</td>
+      <td>7022.49</td>
+    </tr>
+    <tr>
+      <th>Spring - Fibonacci(25)</th>
+      <td>4371.40</td>
+      <td>4534.10</td>
+      <td>4464.63</td>
+    </tr>
+    <tr>
+      <th>Spring - HelloWorld</th>
+      <td>21005.18</td>
+      <td>21837.85</td>
+      <td>21461.88</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>⏱️ 평균 Latency (ms)</h3><canvas id="chart_single_Latencyms"></canvas>
+        <script>
+            new Chart(document.getElementById('chart_single_Latencyms'), {
+                type: 'bar',
+                data: {
+                    labels: ["Django - Fibonacci(25)", "Django - HelloWorld", "Express - Fibonacci(25)", "Express - HelloWorld", "FastAPI - Fibonacci(25)", "FastAPI - HelloWorld", "Spring - Fibonacci(25)", "Spring - HelloWorld"],
+                    datasets: [{"label": "Run 1", "data": [17.4, 27.02, 11.17, 6.36, 277.01, 14.48, 5.08, 5.25]}, {"label": "Run 2", "data": [10.91, 27.22, 11.19, 6.37, 275.6, 14.62, 4.41, 4.58]}, {"label": "Run 3", "data": [17.04, 27.05, 11.16, 6.36, 278.22, 14.42, 4.43, 4.68]}, {"label": "Run 4", "data": [17.4, 27.31, 11.16, 6.4, 279.18, 15.31, 4.48, 4.64]}, {"label": "Run 5", "data": [17.86, 27.02, 11.13, 6.48, 278.34, 14.37, 4.48, 4.6]}]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true } },
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } }
+                }
+            });
+        </script>
+        <table border="1" class="dataframe summary-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>test_case</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Django - Fibonacci(25)</th>
+      <td>10.91</td>
+      <td>17.86</td>
+      <td>16.12</td>
+    </tr>
+    <tr>
+      <th>Django - HelloWorld</th>
+      <td>27.02</td>
+      <td>27.31</td>
+      <td>27.12</td>
+    </tr>
+    <tr>
+      <th>Express - Fibonacci(25)</th>
+      <td>11.13</td>
+      <td>11.19</td>
+      <td>11.16</td>
+    </tr>
+    <tr>
+      <th>Express - HelloWorld</th>
+      <td>6.36</td>
+      <td>6.48</td>
+      <td>6.39</td>
+    </tr>
+    <tr>
+      <th>FastAPI - Fibonacci(25)</th>
+      <td>275.60</td>
+      <td>279.18</td>
+      <td>277.67</td>
+    </tr>
+    <tr>
+      <th>FastAPI - HelloWorld</th>
+      <td>14.37</td>
+      <td>15.31</td>
+      <td>14.64</td>
+    </tr>
+    <tr>
+      <th>Spring - Fibonacci(25)</th>
+      <td>4.41</td>
+      <td>5.08</td>
+      <td>4.58</td>
+    </tr>
+    <tr>
+      <th>Spring - HelloWorld</th>
+      <td>4.58</td>
+      <td>5.25</td>
+      <td>4.75</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>⚙️ 총 CPU 사용량 (%)</h3><canvas id="chart_single_CPU"></canvas>
+        <script>
+            new Chart(document.getElementById('chart_single_CPU'), {
+                type: 'bar',
+                data: {
+                    labels: ["Django - Fibonacci(25)", "Django - HelloWorld", "Express - Fibonacci(25)", "Express - HelloWorld", "FastAPI - Fibonacci(25)", "FastAPI - HelloWorld", "Spring - Fibonacci(25)", "Spring - HelloWorld"],
+                    datasets: [{"label": "Run 1", "data": [1.79, 95.02, 101.05, 99.19, 99.61, 88.56, 105.66, 108.14]}, {"label": "Run 2", "data": [2.79, 94.92, 101.3, 99.91, 99.57, 88.05, 105.67, 107.82]}, {"label": "Run 3", "data": [2.03, 94.82, 101.73, 99.0, 99.76, 88.17, 105.77, 106.77]}, {"label": "Run 4", "data": [1.91, 94.68, 100.77, 99.26, 100.05, 87.35, 105.44, 107.34]}, {"label": "Run 5", "data": [12.09, 94.72, 101.04, 99.21, 99.96, 87.89, 105.72, 107.37]}]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true } },
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } }
+                }
+            });
+        </script>
+        <table border="1" class="dataframe summary-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>test_case</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Django - Fibonacci(25)</th>
+      <td>1.79</td>
+      <td>12.09</td>
+      <td>4.12</td>
+    </tr>
+    <tr>
+      <th>Django - HelloWorld</th>
+      <td>94.68</td>
+      <td>95.02</td>
+      <td>94.83</td>
+    </tr>
+    <tr>
+      <th>Express - Fibonacci(25)</th>
+      <td>100.77</td>
+      <td>101.73</td>
+      <td>101.18</td>
+    </tr>
+    <tr>
+      <th>Express - HelloWorld</th>
+      <td>99.00</td>
+      <td>99.91</td>
+      <td>99.31</td>
+    </tr>
+    <tr>
+      <th>FastAPI - Fibonacci(25)</th>
+      <td>99.57</td>
+      <td>100.05</td>
+      <td>99.79</td>
+    </tr>
+    <tr>
+      <th>FastAPI - HelloWorld</th>
+      <td>87.35</td>
+      <td>88.56</td>
+      <td>88.00</td>
+    </tr>
+    <tr>
+      <th>Spring - Fibonacci(25)</th>
+      <td>105.44</td>
+      <td>105.77</td>
+      <td>105.65</td>
+    </tr>
+    <tr>
+      <th>Spring - HelloWorld</th>
+      <td>106.77</td>
+      <td>108.14</td>
+      <td>107.49</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>🧠 총 메모리 사용량 (KB)</h3><canvas id="chart_single_MemoryKB"></canvas>
+        <script>
+            new Chart(document.getElementById('chart_single_MemoryKB'), {
+                type: 'bar',
+                data: {
+                    labels: ["Django - Fibonacci(25)", "Django - HelloWorld", "Express - Fibonacci(25)", "Express - HelloWorld", "FastAPI - Fibonacci(25)", "FastAPI - HelloWorld", "Spring - Fibonacci(25)", "Spring - HelloWorld"],
+                    datasets: [{"label": "Run 1", "data": [51832.0, 50763.0, 105776.0, 97063.0, 40407.0, 38032.0, 136666.0, 125341.0]}, {"label": "Run 2", "data": [52099.0, 51574.0, 105296.0, 96607.0, 42679.0, 37998.0, 81518.0, 73232.0]}, {"label": "Run 3", "data": [51611.0, 50456.0, 106173.0, 96970.0, 41932.0, 38050.0, 82430.0, 74336.0]}, {"label": "Run 4", "data": [51602.0, 51064.0, 106245.0, 97495.0, 41146.0, 37686.0, 79126.0, 73270.0]}, {"label": "Run 5", "data": [52427.0, 51299.0, 105014.0, 96276.0, 41274.0, 38392.0, 79573.0, 72506.0]}]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true } },
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } }
+                }
+            });
+        </script>
+        <table border="1" class="dataframe summary-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>test_case</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Django - Fibonacci(25)</th>
+      <td>51602</td>
+      <td>52427</td>
+      <td>51914.2</td>
+    </tr>
+    <tr>
+      <th>Django - HelloWorld</th>
+      <td>50456</td>
+      <td>51574</td>
+      <td>51031.2</td>
+    </tr>
+    <tr>
+      <th>Express - Fibonacci(25)</th>
+      <td>105014</td>
+      <td>106245</td>
+      <td>105700.8</td>
+    </tr>
+    <tr>
+      <th>Express - HelloWorld</th>
+      <td>96276</td>
+      <td>97495</td>
+      <td>96882.2</td>
+    </tr>
+    <tr>
+      <th>FastAPI - Fibonacci(25)</th>
+      <td>40407</td>
+      <td>42679</td>
+      <td>41487.6</td>
+    </tr>
+    <tr>
+      <th>FastAPI - HelloWorld</th>
+      <td>37686</td>
+      <td>38392</td>
+      <td>38031.6</td>
+    </tr>
+    <tr>
+      <th>Spring - Fibonacci(25)</th>
+      <td>79126</td>
+      <td>136666</td>
+      <td>91862.6</td>
+    </tr>
+    <tr>
+      <th>Spring - HelloWorld</th>
+      <td>72506</td>
+      <td>125341</td>
+      <td>83737.0</td>
+    </tr>
+  </tbody>
+</table>
+        </div><div class='scenario-section'><h2>MULTI 시나리오</h2><h3>🚀 TPS (초당 요청 수)</h3><canvas id="chart_multi_TPS"></canvas>
+        <script>
+            new Chart(document.getElementById('chart_multi_TPS'), {
+                type: 'bar',
+                data: {
+                    labels: ["Django - Fibonacci(25)", "Django - HelloWorld", "Express - Fibonacci(25)", "Express - HelloWorld", "FastAPI - Fibonacci(25)", "FastAPI - HelloWorld", "Spring - Fibonacci(25)", "Spring - HelloWorld"],
+                    datasets: [{"label": "Run 1", "data": [8.33, 2205.6, 14306.1, 97786.11, 606.72, 23201.41, 35603.87, 509.15]}, {"label": "Run 2", "data": [0.2, 2143.66, 14822.05, 107840.8, 622.3, 24748.21, 34086.07, 1017.66]}, {"label": "Run 3", "data": [0.1, 2169.13, 14617.08, 107836.51, 623.36, 25113.63, 4824.4, 583.93]}, {"label": "Run 4", "data": [17.24, 2412.16, 14464.38, 108583.18, 616.0, 24553.8, 2731.04, 2355.69]}, {"label": "Run 5", "data": [26.65, 2435.01, 13886.85, 107416.11, 623.66, 25019.96, 4171.52, 5743.06]}]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true } },
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } }
+                }
+            });
+        </script>
+        <table border="1" class="dataframe summary-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>test_case</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Django - Fibonacci(25)</th>
+      <td>0.10</td>
+      <td>26.65</td>
+      <td>10.50</td>
+    </tr>
+    <tr>
+      <th>Django - HelloWorld</th>
+      <td>2143.66</td>
+      <td>2435.01</td>
+      <td>2273.11</td>
+    </tr>
+    <tr>
+      <th>Express - Fibonacci(25)</th>
+      <td>13886.85</td>
+      <td>14822.05</td>
+      <td>14419.29</td>
+    </tr>
+    <tr>
+      <th>Express - HelloWorld</th>
+      <td>97786.11</td>
+      <td>108583.18</td>
+      <td>105892.54</td>
+    </tr>
+    <tr>
+      <th>FastAPI - Fibonacci(25)</th>
+      <td>606.72</td>
+      <td>623.66</td>
+      <td>618.41</td>
+    </tr>
+    <tr>
+      <th>FastAPI - HelloWorld</th>
+      <td>23201.41</td>
+      <td>25113.63</td>
+      <td>24527.40</td>
+    </tr>
+    <tr>
+      <th>Spring - Fibonacci(25)</th>
+      <td>2731.04</td>
+      <td>35603.87</td>
+      <td>16283.38</td>
+    </tr>
+    <tr>
+      <th>Spring - HelloWorld</th>
+      <td>509.15</td>
+      <td>5743.06</td>
+      <td>2041.90</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>⏱️ 평균 Latency (ms)</h3><canvas id="chart_multi_Latencyms"></canvas>
+        <script>
+            new Chart(document.getElementById('chart_multi_Latencyms'), {
+                type: 'bar',
+                data: {
+                    labels: ["Django - Fibonacci(25)", "Django - HelloWorld", "Express - Fibonacci(25)", "Express - HelloWorld", "FastAPI - Fibonacci(25)", "FastAPI - HelloWorld", "Spring - Fibonacci(25)", "Spring - HelloWorld"],
+                    datasets: [{"label": "Run 1", "data": [5.93, 7.15, 1.7, 2.7, 36.32, 7.01, 1.22, 282.78]}, {"label": "Run 2", "data": [3.81, 7.2, 1.47, 1.69, 32.17, 5.76, 1.63, 514.48]}, {"label": "Run 3", "data": [3.44, 7.18, 1.45, 1.67, 32.04, 5.75, 282.65, 388.44]}, {"label": "Run 4", "data": [5.78, 7.19, 1.55, 1.63, 33.06, 6.36, 320.35, 635.36]}, {"label": "Run 5", "data": [4.66, 7.1, 1.8, 1.66, 33.82, 5.49, 313.68, 820.67]}]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true } },
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } }
+                }
+            });
+        </script>
+        <table border="1" class="dataframe summary-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>test_case</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Django - Fibonacci(25)</th>
+      <td>3.44</td>
+      <td>5.93</td>
+      <td>4.72</td>
+    </tr>
+    <tr>
+      <th>Django - HelloWorld</th>
+      <td>7.10</td>
+      <td>7.20</td>
+      <td>7.16</td>
+    </tr>
+    <tr>
+      <th>Express - Fibonacci(25)</th>
+      <td>1.45</td>
+      <td>1.80</td>
+      <td>1.59</td>
+    </tr>
+    <tr>
+      <th>Express - HelloWorld</th>
+      <td>1.63</td>
+      <td>2.70</td>
+      <td>1.87</td>
+    </tr>
+    <tr>
+      <th>FastAPI - Fibonacci(25)</th>
+      <td>32.04</td>
+      <td>36.32</td>
+      <td>33.48</td>
+    </tr>
+    <tr>
+      <th>FastAPI - HelloWorld</th>
+      <td>5.49</td>
+      <td>7.01</td>
+      <td>6.07</td>
+    </tr>
+    <tr>
+      <th>Spring - Fibonacci(25)</th>
+      <td>1.22</td>
+      <td>320.35</td>
+      <td>183.91</td>
+    </tr>
+    <tr>
+      <th>Spring - HelloWorld</th>
+      <td>282.78</td>
+      <td>820.67</td>
+      <td>528.35</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>⚙️ 총 CPU 사용량 (%)</h3><canvas id="chart_multi_CPU"></canvas>
+        <script>
+            new Chart(document.getElementById('chart_multi_CPU'), {
+                type: 'bar',
+                data: {
+                    labels: ["Django - Fibonacci(25)", "Django - HelloWorld", "Express - Fibonacci(25)", "Express - HelloWorld", "FastAPI - Fibonacci(25)", "FastAPI - HelloWorld", "Spring - Fibonacci(25)", "Spring - HelloWorld"],
+                    datasets: [{"label": "Run 1", "data": [1.53, 116.67, 1004.47, 703.98, 957.87, 612.26, 949.67, 4.34]}, {"label": "Run 2", "data": [0.23, 116.67, 1081.89, 833.94, 1039.0, 645.98, 855.59, 5.49]}, {"label": "Run 3", "data": [0.12, 119.89, 1080.85, 835.98, 1051.02, 659.98, 83.52, 3.62]}, {"label": "Run 4", "data": [1.88, 129.0, 1089.69, 846.44, 1031.5, 655.31, 36.2, 14.13]}, {"label": "Run 5", "data": [4.03, 118.9, 983.05, 809.76, 1029.04, 648.63, 56.67, 23.97]}]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true } },
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } }
+                }
+            });
+        </script>
+        <table border="1" class="dataframe summary-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>test_case</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Django - Fibonacci(25)</th>
+      <td>0.12</td>
+      <td>4.03</td>
+      <td>1.56</td>
+    </tr>
+    <tr>
+      <th>Django - HelloWorld</th>
+      <td>116.67</td>
+      <td>129.00</td>
+      <td>120.23</td>
+    </tr>
+    <tr>
+      <th>Express - Fibonacci(25)</th>
+      <td>983.05</td>
+      <td>1089.69</td>
+      <td>1047.99</td>
+    </tr>
+    <tr>
+      <th>Express - HelloWorld</th>
+      <td>703.98</td>
+      <td>846.44</td>
+      <td>806.02</td>
+    </tr>
+    <tr>
+      <th>FastAPI - Fibonacci(25)</th>
+      <td>957.87</td>
+      <td>1051.02</td>
+      <td>1021.69</td>
+    </tr>
+    <tr>
+      <th>FastAPI - HelloWorld</th>
+      <td>612.26</td>
+      <td>659.98</td>
+      <td>644.43</td>
+    </tr>
+    <tr>
+      <th>Spring - Fibonacci(25)</th>
+      <td>36.20</td>
+      <td>949.67</td>
+      <td>396.33</td>
+    </tr>
+    <tr>
+      <th>Spring - HelloWorld</th>
+      <td>3.62</td>
+      <td>23.97</td>
+      <td>10.31</td>
+    </tr>
+  </tbody>
+</table>
+        <h3>🧠 총 메모리 사용량 (KB)</h3><canvas id="chart_multi_MemoryKB"></canvas>
+        <script>
+            new Chart(document.getElementById('chart_multi_MemoryKB'), {
+                type: 'bar',
+                data: {
+                    labels: ["Django - Fibonacci(25)", "Django - HelloWorld", "Express - Fibonacci(25)", "Express - HelloWorld", "FastAPI - Fibonacci(25)", "FastAPI - HelloWorld", "Spring - Fibonacci(25)", "Spring - HelloWorld"],
+                    datasets: [{"label": "Run 1", "data": [255149.0, 201843.0, 963034.0, 926138.0, 288525.0, 299878.0, 168138.0, 86974.0]}, {"label": "Run 2", "data": [223846.0, 204736.0, 1057555.0, 919746.0, 291750.0, 309802.0, 154358.0, 127736.0]}, {"label": "Run 3", "data": [336592.0, 303354.0, 1058051.0, 920486.0, 315754.0, 307293.0, 146824.0, 101979.0]}, {"label": "Run 4", "data": [314312.0, 263125.0, 1054379.0, 918864.0, 306405.0, 312754.0, 157922.0, 143957.0]}, {"label": "Run 5", "data": [277333.0, 222869.0, 1050267.0, 916568.0, 300045.0, 294539.0, 168302.0, 153696.0]}]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true } },
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } }
+                }
+            });
+        </script>
+        <table border="1" class="dataframe summary-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>test_case</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Django - Fibonacci(25)</th>
+      <td>223846</td>
+      <td>336592</td>
+      <td>281446.4</td>
+    </tr>
+    <tr>
+      <th>Django - HelloWorld</th>
+      <td>201843</td>
+      <td>303354</td>
+      <td>239185.4</td>
+    </tr>
+    <tr>
+      <th>Express - Fibonacci(25)</th>
+      <td>963034</td>
+      <td>1058051</td>
+      <td>1036657.2</td>
+    </tr>
+    <tr>
+      <th>Express - HelloWorld</th>
+      <td>916568</td>
+      <td>926138</td>
+      <td>920360.4</td>
+    </tr>
+    <tr>
+      <th>FastAPI - Fibonacci(25)</th>
+      <td>288525</td>
+      <td>315754</td>
+      <td>300495.8</td>
+    </tr>
+    <tr>
+      <th>FastAPI - HelloWorld</th>
+      <td>294539</td>
+      <td>312754</td>
+      <td>304853.2</td>
+    </tr>
+    <tr>
+      <th>Spring - Fibonacci(25)</th>
+      <td>146824</td>
+      <td>168302</td>
+      <td>159108.8</td>
+    </tr>
+    <tr>
+      <th>Spring - HelloWorld</th>
+      <td>86974</td>
+      <td>153696</td>
+      <td>122868.4</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+    </div>
+</body>
+</html>

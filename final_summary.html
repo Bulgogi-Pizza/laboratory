@@ -1,0 +1,691 @@
+
+<html>
+<head>
+<title>성능 테스트 종합 결과</title>
+<style>
+    body { font-family: sans-serif; margin: 2em; }
+    h1, h2 { color: #333; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 2em; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+    .bar-container { width: 100px; background-color: #eee; display: inline-block; vertical-align: middle; height: 1em; border-radius: 3px; }
+    .bar { height: 100%; background-color: #4CAF50; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>📊 성능 테스트 종합 결과</h1>
+<p>각 시나리오별 5회 실행의 평균값입니다.</p>
+<h2>🚀 TPS (초당 요청 수) 비교</h2><table><thead><tr><th>Test Case</th><th>multi</th><th>normal</th><th>single</th></tr></thead><tbody><tr><td>Django - Fibonacci(25)</td>
+                <td>
+                    10.50
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.00908326577834634%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    68.59
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.059335352355883386%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    125.78
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.10880887329527647%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Django - HelloWorld</td>
+                <td>
+                    2,273.11
+                    <div class="bar-container">
+                        <div class="bar" style="width: 1.966405930801605%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    3,512.52
+                    <div class="bar-container">
+                        <div class="bar" style="width: 3.0385859725482947%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    3,588.06
+                    <div class="bar-container">
+                        <div class="bar" style="width: 3.103933581776512%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Express - Fibonacci(25)</td>
+                <td>
+                    14,419.29
+                    <div class="bar-container">
+                        <div class="bar" style="width: 12.473737467147775%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    1,800.85
+                    <div class="bar-container">
+                        <div class="bar" style="width: 1.5578665882795246%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    1,804.11
+                    <div class="bar-container">
+                        <div class="bar" style="width: 1.5606867260354684%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Express - HelloWorld</td>
+                <td>
+                    105,892.54
+                    <div class="bar-container">
+                        <div class="bar" style="width: 91.6047699775401%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    17,965.87
+                    <div class="bar-container">
+                        <div class="bar" style="width: 15.54178782373516%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    18,020.66
+                    <div class="bar-container">
+                        <div class="bar" style="width: 15.589185169639505%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>FastAPI - Fibonacci(25)</td>
+                <td>
+                    618.41
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.5349697514273487%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    70.86
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.06129906790986874%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    70.84
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.06128176645124332%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>FastAPI - HelloWorld</td>
+                <td>
+                    24,527.40
+                    <div class="bar-container">
+                        <div class="bar" style="width: 21.217989814458292%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    7,022.44
+                    <div class="bar-container">
+                        <div class="bar" style="width: 6.074922755475284%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    7,022.49
+                    <div class="bar-container">
+                        <div class="bar" style="width: 6.074966009121847%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Spring - Fibonacci(25)</td>
+                <td>
+                    16,283.38
+                    <div class="bar-container">
+                        <div class="bar" style="width: 14.086311267600882%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    33,894.06
+                    <div class="bar-container">
+                        <div class="bar" style="width: 29.320833836877867%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    4,464.63
+                    <div class="bar-container">
+                        <div class="bar" style="width: 3.862230561140803%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Spring - HelloWorld</td>
+                <td>
+                    2,041.90
+                    <div class="bar-container">
+                        <div class="bar" style="width: 1.7663924183624187%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    115,597.19
+                    <div class="bar-container">
+                        <div class="bar" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    21,461.88
+                    <div class="bar-container">
+                        <div class="bar" style="width: 18.56609144218817%;"></div>
+                    </div>
+                </td>
+                </tr></tbody></table><h2>⚙️ 총 CPU 사용량 (%) 비교</h2><table><thead><tr><th>Test Case</th><th>multi</th><th>normal</th><th>single</th></tr></thead><tbody><tr><td>Django - Fibonacci(25)</td>
+                <td>
+                    1.56
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.14885638221738756%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    1.14
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.10877966392809091%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    4.12
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.39313352226643383%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Django - HelloWorld</td>
+                <td>
+                    120.23
+                    <div class="bar-container">
+                        <div class="bar" style="width: 11.472437714100325%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    95.49
+                    <div class="bar-container">
+                        <div class="bar" style="width: 9.111728165345088%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    94.83
+                    <div class="bar-container">
+                        <div class="bar" style="width: 9.048750465176195%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Express - Fibonacci(25)</td>
+                <td>
+                    1,047.99
+                    <div class="bar-container">
+                        <div class="bar" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    101.53
+                    <div class="bar-container">
+                        <div class="bar" style="width: 9.688069542648307%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    101.18
+                    <div class="bar-container">
+                        <div class="bar" style="width: 9.654672277407228%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Express - HelloWorld</td>
+                <td>
+                    806.02
+                    <div class="bar-container">
+                        <div class="bar" style="width: 76.91103922747354%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    98.98
+                    <div class="bar-container">
+                        <div class="bar" style="width: 9.444746610177578%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    99.31
+                    <div class="bar-container">
+                        <div class="bar" style="width: 9.476235460262025%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>FastAPI - Fibonacci(25)</td>
+                <td>
+                    1,021.69
+                    <div class="bar-container">
+                        <div class="bar" style="width: 97.49043406902737%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    99.51
+                    <div class="bar-container">
+                        <div class="bar" style="width: 9.495319611828359%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    99.79
+                    <div class="bar-container">
+                        <div class="bar" style="width: 9.522037424021223%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>FastAPI - HelloWorld</td>
+                <td>
+                    644.43
+                    <div class="bar-container">
+                        <div class="bar" style="width: 61.49199896945581%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    87.40
+                    <div class="bar-container">
+                        <div class="bar" style="width: 8.33977423448697%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    88.00
+                    <div class="bar-container">
+                        <div class="bar" style="width: 8.397026689185966%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Spring - Fibonacci(25)</td>
+                <td>
+                    396.33
+                    <div class="bar-container">
+                        <div class="bar" style="width: 37.818108951421294%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    970.08
+                    <div class="bar-container">
+                        <div class="bar" style="width: 92.56576875733548%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    105.65
+                    <div class="bar-container">
+                        <div class="bar" style="width: 10.08120306491474%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Spring - HelloWorld</td>
+                <td>
+                    10.31
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.9837880132444012%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    737.94
+                    <div class="bar-container">
+                        <div class="bar" style="width: 70.41479403429423%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    107.49
+                    <div class="bar-container">
+                        <div class="bar" style="width: 10.256777259324993%;"></div>
+                    </div>
+                </td>
+                </tr></tbody></table><h2>⏱️ 평균 Latency (ms) 비교</h2><table><thead><tr><th>Test Case</th><th>multi</th><th>normal</th><th>single</th></tr></thead><tbody><tr><td>Django - Fibonacci(25)</td>
+                <td>
+                    4.72
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.5941740728618545%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    15.74
+                    <div class="bar-container">
+                        <div class="bar" style="width: 1.98141947178932%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    16.12
+                    <div class="bar-container">
+                        <div class="bar" style="width: 2.0292555200281983%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Django - HelloWorld</td>
+                <td>
+                    7.16
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.9013318562904403%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    27.91
+                    <div class="bar-container">
+                        <div class="bar" style="width: 3.513431858808127%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    27.12
+                    <div class="bar-container">
+                        <div class="bar" style="width: 3.413983232206249%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Express - Fibonacci(25)</td>
+                <td>
+                    1.59
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.2001560965784637%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    11.19
+                    <div class="bar-container">
+                        <div class="bar" style="width: 1.4086457362974898%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    11.16
+                    <div class="bar-container">
+                        <div class="bar" style="width: 1.4048692061733679%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Express - HelloWorld</td>
+                <td>
+                    1.87
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.23540371107026864%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    6.48
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.8157305068103428%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    6.39
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.8044009164379768%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>FastAPI - Fibonacci(25)</td>
+                <td>
+                    33.48
+                    <div class="bar-container">
+                        <div class="bar" style="width: 4.214607618520104%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    278.21
+                    <div class="bar-container">
+                        <div class="bar" style="width: 35.02228152773232%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    277.67
+                    <div class="bar-container">
+                        <div class="bar" style="width: 34.95430398549813%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>FastAPI - HelloWorld</td>
+                <td>
+                    6.07
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.7641179284473426%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    14.85
+                    <div class="bar-container">
+                        <div class="bar" style="width: 1.8693824114403685%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    14.64
+                    <div class="bar-container">
+                        <div class="bar" style="width: 1.8429467005715148%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Spring - Fibonacci(25)</td>
+                <td>
+                    183.91
+                    <div class="bar-container">
+                        <div class="bar" style="width: 23.151388504242302%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    612.79
+                    <div class="bar-container">
+                        <div class="bar" style="width: 77.14066315868979%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    4.58
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.576550265615952%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Spring - HelloWorld</td>
+                <td>
+                    528.35
+                    <div class="bar-container">
+                        <div class="bar" style="width: 66.51098970266119%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    794.38
+                    <div class="bar-container">
+                        <div class="bar" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    4.75
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0.5979506029859765%;"></div>
+                    </div>
+                </td>
+                </tr></tbody></table><h2>🧠 총 메모리 사용량 (KB) 비교</h2><table><thead><tr><th>Test Case</th><th>multi</th><th>normal</th><th>single</th></tr></thead><tbody><tr><td>Django - Fibonacci(25)</td>
+                <td>
+                    281,446.40
+                    <div class="bar-container">
+                        <div class="bar" style="width: 27.14941834195528%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    51,300.60
+                    <div class="bar-container">
+                        <div class="bar" style="width: 4.948656122776169%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    51,914.20
+                    <div class="bar-container">
+                        <div class="bar" style="width: 5.007846373902578%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Django - HelloWorld</td>
+                <td>
+                    239,185.40
+                    <div class="bar-container">
+                        <div class="bar" style="width: 23.07275732035624%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    50,773.80
+                    <div class="bar-container">
+                        <div class="bar" style="width: 4.897838938464904%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    51,031.20
+                    <div class="bar-container">
+                        <div class="bar" style="width: 4.922668747200135%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Express - Fibonacci(25)</td>
+                <td>
+                    1,036,657.20
+                    <div class="bar-container">
+                        <div class="bar" style="width: 100.0%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    106,623.40
+                    <div class="bar-container">
+                        <div class="bar" style="width: 10.285309357808927%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    105,700.80
+                    <div class="bar-container">
+                        <div class="bar" style="width: 10.196311760531833%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Express - HelloWorld</td>
+                <td>
+                    920,360.40
+                    <div class="bar-container">
+                        <div class="bar" style="width: 88.78155671903886%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    97,354.40
+                    <div class="bar-container">
+                        <div class="bar" style="width: 9.391185437191773%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    96,882.20
+                    <div class="bar-container">
+                        <div class="bar" style="width: 9.345635182006164%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>FastAPI - Fibonacci(25)</td>
+                <td>
+                    300,495.80
+                    <div class="bar-container">
+                        <div class="bar" style="width: 28.98699782338848%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    39,545.80
+                    <div class="bar-container">
+                        <div class="bar" style="width: 3.8147422310866124%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    41,487.60
+                    <div class="bar-container">
+                        <div class="bar" style="width: 4.002055838709267%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>FastAPI - HelloWorld</td>
+                <td>
+                    304,853.20
+                    <div class="bar-container">
+                        <div class="bar" style="width: 29.407329636064844%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    37,852.40
+                    <div class="bar-container">
+                        <div class="bar" style="width: 3.651390257068586%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    38,031.60
+                    <div class="bar-container">
+                        <div class="bar" style="width: 3.668676588557915%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Spring - Fibonacci(25)</td>
+                <td>
+                    159,108.80
+                    <div class="bar-container">
+                        <div class="bar" style="width: 15.348255913333741%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    196,273.40
+                    <div class="bar-container">
+                        <div class="bar" style="width: 18.93329829764362%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    91,862.60
+                    <div class="bar-container">
+                        <div class="bar" style="width: 8.861424972498142%;"></div>
+                    </div>
+                </td>
+                </tr><tr><td>Spring - HelloWorld</td>
+                <td>
+                    122,868.40
+                    <div class="bar-container">
+                        <div class="bar" style="width: 11.8523654685464%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    176,786.00
+                    <div class="bar-container">
+                        <div class="bar" style="width: 17.05346762652109%;"></div>
+                    </div>
+                </td>
+                
+                <td>
+                    83,737.00
+                    <div class="bar-container">
+                        <div class="bar" style="width: 8.077597879028865%;"></div>
+                    </div>
+                </td>
+                </tr></tbody></table></body></html>
